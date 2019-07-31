@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <%- include('components/header') %>
+</head>
+<body>
+  <div class="container">
+    <div class="card col-4  bg-warning mt-5" >
+      <div class="card-body">
+        <!-- <div class="text-right">
+            <button type="button" class="btn btn-danger">X</button>
+        </div> -->
+        <h5 class="card-title"><%= note[0].title %></h5>
+        <p class="card-text"><%= note[0].text %></p>
+        <a href="/" type="button" class="btn btn-success">Go back</a>
+    </div>
+    </div>
+  </div>
+</body>
+</html>
