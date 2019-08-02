@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
-  <%- include('./components/header') %>
-
+  <title>cards</title>
+  <link rel="stylesheet" href="../style/bootstrap.css">
 </head>
-<body>
-  <!-- <h1>Hello people !!!</h1>
-  <button type="button" class="btn btn-danger">Danger</button> -->
 
+<body>
   <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-5 ml-1 mr-1">
       <div class="col-6">
         <h2>
           <span class="badge badge-secondary">Notes list
-    
-        </span>
-      </h2>
+
+          </span>
+        </h2>
 
       </div>
       <div class="col-6 text-right">
-        <button type="button" id="addButton" class="btn btn-success badge-pill">add note</button>
+        <button type="button" id="addButton" class="btn btn-success badge-pill">add Note</button>
+        <button type="button" id="addButton" class="btn btn-info badge-pill">add List</button>
 
       </div>
     </div>
     <div class="row mt-3" id="noteList">
 
       <% notes.forEach((el)=>{ %>
-        
-      <div class="col-4">
+
+      <div class="col-lg-4">
         <div class="card bg-warning m-3">
           <div class="card-body" style="cursor: pointer" data-id="<%= el.id %>">
             <div class="text-right">
-                <button type="button" class="btn btn-danger alert-link badge-pill"  data-id="<%= el.id %>">X</button>
+              <button type="button" class="btn btn-danger alert-link badge-pill" data-id="<%= el.id %>">X</button>
             </div>
             <h3 class="card-title alert-link"><%= el.title%></h3>
             <h4 class="card-text"><%= el.text %></h4>
@@ -44,7 +43,7 @@
         </div>
       </div>
 
-      <% })%>      
+      <% })%>
 
     </div>
   </div>
@@ -53,6 +52,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> -->
 
-    <script src="../script/index.js"></script>
+  <script src="../script/index.js"></script>
 </body>
+
 </html>
