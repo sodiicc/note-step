@@ -30,29 +30,24 @@
     <title>Bootstrap</title>
 </head>
 <body>
+
 <div class="col-6 text-right">
 
-<div id="form-create" class="bg-light text-dark col-6 p-3 mx-auto">
-    <div class="input-group ">
+    <div id="form-create" class="bg-success text-dark col-6 p-3 mx-auto">
 
-<div id="inputContainer">
+        <div class="input-group ">
 
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                </div>
+            <div class="input-group mb-3">
+
+                <input id="input_form" type="text" class="form-control" aria-label="Text input with checkbox">
+                <button id="add-input" type="button" class="btn btn-secondary">+</button>
             </div>
-
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
-            <button id="add-input" type="button" class="btn btn-secondary">+</button>
-
         </div>
-    </div>
-    </div>
 
-    <button type="button" class="btn btn-secondary w-25 p-3 ">Save New</button>
-</div>
+        <div class="text-left" id="new-task"></div>
+
+        <button type="button" class="btn btn-secondary w-25 p-3 ">Save New</button>
+    </div>
 
     <button id="add-btn" type="button" class="btn btn-info badge-pill ">Add new</button>
 
