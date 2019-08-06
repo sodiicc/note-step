@@ -1,43 +1,30 @@
+let addBtn = document.getElementById('add-btn');
 
-    let addBtn = document.getElementById('add-btn');
-
-    addBtn.addEventListener('click', function () {
-        document.getElementById('form-create').style.display = 'block';
-    });
-
-
-let newInput = document.getElementById('add-input');
-
-document.addEventListener('click',(event)=>{
-    if(event.target.id==='add-input'){
-        let currenInnerHTMLState = document.getElementById('inputContainer').innerHTML;
-        console.log(currenInnerHTMLState);
-
-        document.getElementById('inputContainer').innerHTML=currenInnerHTMLState+`<div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <div class="input-group-text">
-                    <input type="checkbox" aria-label="Checkbox for following text input">
-                </div>
-            </div>
-
-            <input type="text" class="form-control" aria-label="Text input with checkbox">
-            <button id="add-input" type="button" class="btn btn-secondary">+</button>
-
-        </div>`
-
-    }
+addBtn.addEventListener('click', function () {
+    document.getElementById('form-create').style.display = 'block';
 });
 
-// newInput.addEventListener('click', function () {
-//     document.getElementById('inputContainer').innerHTML+=`<div class="input-group mb-3">
-//             <div class="input-group-prepend">
-//                 <div class="input-group-text">
-//                     <input type="checkbox" aria-label="Checkbox for following text input">
-//                 </div>
-//             </div>
-//
-//             <input type="text" class="form-control" aria-label="Text input with checkbox">
-//             <button id="add-input" type="button" class="btn btn-secondary">+</button>
-//
-//         </div>`
-// })
+
+function getValue() {
+    let text = document.getElementById("input_form").value;
+
+    let newLi = document.createElement("li");
+    document.getElementById('new-task').appendChild(newLi);
+    newLi.innerHTML = text;
+
+    let deleteTask = document.createElement('button');
+    deleteTask.textContent = 'x';
+    deleteTask.style.margin = '10px 20px'
+    newLi.appendChild(deleteTask);
+    deleteTask.addEventListener('click', function () {
+        newLi.style.display= 'none';
+    })
+}
+
+let addInput = document.getElementById('add-input');
+addInput.addEventListener('click', function () {
+    getValue();
+    document.getElementById("input_form").value = "";
+
+});
+
