@@ -1,31 +1,22 @@
 let noteList = document.querySelector('#noteList')
 let createBtn = document.getElementById('addButton')
+let createBtnList = document.getElementById('addButtonList')
 let currentId
-
-createBtn.addEventListener('click', createNote)
 
 noteList.addEventListener('click', (e) => {
   let id = e.target.dataset.id
   if (e.target.classList.contains('btn-danger')) {
     console.log('delete')
     deleteNote(id)
-  }else if (e.target.classList.contains('edit-btn')) {
+  } else if (e.target.classList.contains('edit-btn')) {
     console.log('Edit')
     editNote(id)
   } else if (e.target.classList.contains('card-body')) {
     window.location.href = `/id/${id}`
-    }
-  })
-
-async function createNote() {
-  window.location.href = `/notes`
-  let req = await fetch('http://127.0.0.1:3000/notes', {
-    method: 'GET',
-    headers: {
-      "Content-type": "application/json"
-    }
-  })
-}
+  }else if(e.target.classList.contains('edit-list-btn')){
+    editList(id)
+  }
+})
 
 async function editNote(id) {
   let data = {
@@ -34,15 +25,23 @@ async function editNote(id) {
     text: getTextVal(id)
   }
   console.log('data', data)
-  let req = await fetch(`http://127.0.0.1:3000/api/notes/${id}`, {
-    method: 'GET',
-    headers: {
-      "Content-type": "application/json"
-    },
-  }
-  )
-  // let ans = await req.json()
   window.location.href = `/api/notes/${id}`
+}
+
+async function editList(id) {
+  let text =[]
+  document.querySelectorAll('.list-item').forEach((el)=>{if(el.getAttribute('data-id') == id){
+    text.push(el.innerText)
+  }
+  })
+  console.log('text', text)
+  let data = {
+    id: id,
+    title: getTitleVal(id),
+    text: text
+  }
+  console.log('data', data)
+  window.location.href = `/api/lists/${id}`
 }
 
 async function deleteNote(id) {
@@ -66,10 +65,10 @@ async function deleteNote(id) {
 }
 
 function getTitleVal(id) {
-    return document.querySelector(`.card-body[data-id="${id}"] h3`).innerText  
+  return document.querySelector(`.card-body[data-id="${id}"] h3`).innerText
 }
 function getTextVal(id) {
-    return document.querySelector(`.card-body[data-id="${id}"] h4`).innerText  
+  return document.querySelector(`.card-body[data-id="${id}"] h4`).innerText
 }
 function getCol(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode
@@ -77,3 +76,11 @@ function getCol(id) {
 function getCardBody(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`)
 }
+
+// let listTask = document.getElementById('list-task');
+// el.text.forEach((el) => {
+
+//   let li = document.createElement('li');
+//   li.value = el;
+//   listTask.appendChild(li)
+// })

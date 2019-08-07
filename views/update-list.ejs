@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../../style/bootstrap.css">
+  <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="col-lg-4">
+          <div class="card bg-warning m-3 list" data-idc="${id}">
+            <div class="list-body m-3" style="cursor: pointer" data-id="${id}">
+              <div class="text-right">
+                <a href="/" type="button" data-id="${id}" class="btn btn-danger alert-link badge-pill">X</a>
+              </div>
+              <div class="form-group">
+                <label for="note-title">Title</label>
+                <input type="text" class="form-control" id="note-title" value="<%= list.title %>">
+              </div>
+              <div class="form-group">
+                <label for="note-text">Text</label>
+                <div class="form-groups">
+                <% list.text.forEach((e) => { %>
+                  <div class="p-2">
+                  <textarea class=" note-text col-10 m-0" rows="2" data-id="<%= list.id %>"><%= e %></textarea><button class="bg-danger ml-1 close-btn">X</button>
+                </div>
+                 <% }) %>
+                </div>
+                 <div class="input-group mb-3">
+                   
+                   <input id="input-form" type="text" class="form-control" aria-label="Text input with checkbox">
+                   <button id="add-input" type="button" class="btn btn-secondary">+</button>
+                  </div>
+                  <button class="btn btn-primary badge-pill save-btn mt-3" data-id="<%= list.id %>">Save</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <script src="../../script/update-list.js"></script>
+</body>
+</html>

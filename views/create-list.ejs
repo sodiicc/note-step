@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="../style/bootstrap.css">
+    <title>Create-list</title>
+</head>
+<body>
+
+<div class="container text-right mt-3">
+
+    <div id="form-create" class="bg-success text-dark col-lg-4 p-3 mx-auto">
+
+            <a href="/" id="close-btn"><button type="button" class="btn btn-danger alert-link badge-pill mb-3" >X</button></a>
+
+        <div class="input-group ">
+
+            <div class="input-group mb-3">
+                <p class="mr-2 font-weight-bold">List name</p>
+
+                <input id="list-name" type="text" class="form-control" aria-label="Text input with checkbox">
+            </div>
+            <div class="input-group mb-3">
+
+                <input id="input_form" type="text" class="form-control" aria-label="Text input with checkbox">
+                <button id="add-input" type="button" class="btn btn-secondary">+</button>
+            </div>
+        </div>
+
+        <ol class="text-left" id="new-task"></ol>
+
+        <button id="create-btn" type="button" class="btn btn-secondary  p-3 ">Save New</button>
+    </div>
+
+</div>
+
+<script src="../script/create-list.js"></script>
+</body>
+</html>
