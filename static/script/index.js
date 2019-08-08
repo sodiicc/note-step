@@ -70,17 +70,28 @@ function getTitleVal(id) {
 function getTextVal(id) {
   return document.querySelector(`.card-body[data-id="${id}"] h4`).innerText
 }
+
 function getCol(id) {
-  return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode
+  return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode}
+
 function getCardBody(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`)
 }
+   
+
+let checkbox = document.querySelectorAll('.checkbox')
+checkbox.forEach((el)=>{
+  let id = el.nextElementSibling.getAttribute('data-id')
+  console.log('idElem', id)
+  if(el.checked){
+    el.parentElement.parentElement.appendChild(el.parentElement)
     el.nextElementSibling.style.textDecoration = 'line-through'
     el.nextElementSibling.style.color = 'green'
   }
-  el.addEventListener('click', ()=>{
+  el.addEventListener('click', (event)=>{
+    let e = event.target
 
-    edList(el.nextElementSibling.getAttribute('data-id'))
+    edList(id)
     
     if(el.checked){
       el.parentElement.parentElement.appendChild(el.parentElement)
@@ -92,16 +103,17 @@ function getCardBody(id) {
       
     }
   })
+})
 
 async function edList(id) {
   let text =[]
-  console.log('id', +id)
   let noteText = document.querySelectorAll('.list-item')
-  console.log('noteText', noteText)
   
   noteText.forEach((el)=>{
-    console.log('el', el)
-    text.push([el.innerText, el.previousElementSibling.checked])
+    if(el.getAttribute('data-id') == id){
+      text.push([el.innerText, el.previousElementSibling.checked])
+
+    }
   })
 
     let data = {
@@ -117,5 +129,4 @@ async function edList(id) {
     body: JSON.stringify(data)
   }
   )
-  console.log('data-sr', data)
 }
