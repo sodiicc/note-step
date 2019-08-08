@@ -9,16 +9,37 @@
 </head>
 <body>
   <div class="container">
+    <% if(!note[0].list) {%>
     <div class="card col-lg-4  bg-warning mt-5" >
       <div class="card-body">
         <!-- <div class="text-right">
             <button type="button" class="btn btn-danger">X</button>
         </div> -->
         <h5 class="card-title"><%= note[0].title %></h5>
-        <p class="card-text"><%= note[0].text %></p>
+        <h6 class="card-text"><%= note[0].text %></h6>
         <a href="/" type="button" class="btn btn-success">Go back</a>
     </div>
     </div>
+    <% }else {%>
+
+      <div class="col-lg-4">
+          <div class="card bg-info m-3">
+            <div class="card-body list-card" style="cursor: pointer" data-id="<%= note[0].id %>">
+              <h3 class="card-title alert-link"><%= note[0].title%></h3>
+              <div id="list-task" class="card-text">
+                <% note[0].text.forEach((e) => { %>
+                  <h5>
+                  <input type="checkbox" class="checkbox" <% if(e[1]){ %> checked <% } %> >
+                <span class="list-item" data-id="<%= note[0].id %>"><%= e[0] %></span>
+              </h5>
+               <% }) %>
+              </div>
+              <a href="/"><button class="btn btn-success badge-pill edit-list-btn" data-id="<%= note.id %>">Go back</button></a>
+            </div>
+          </div>
+        </div>
+        <% }%>
   </div>
+  <script src="../script/list.js"></script>
 </body>
 </html>
