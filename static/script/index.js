@@ -70,12 +70,14 @@ function getTitleVal(id) {
 function getTextVal(id) {
   return document.querySelector(`.card-body[data-id="${id}"] h4`).innerText
 }
+
 function getCol(id) {
-  return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode
-}
+  return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode}
+
 function getCardBody(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`)
 }
+   
 
 let checkbox = document.querySelectorAll('.checkbox')
 checkbox.forEach((el)=>{
