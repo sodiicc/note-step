@@ -81,6 +81,7 @@ let checkbox = document.querySelectorAll('.checkbox')
 console.log('checked', checkbox)
 checkbox.forEach((el)=>{
   if(el.checked){
+    el.parentElement.parentElement.appendChild(el.parentElement)
     el.nextElementSibling.style.textDecoration = 'line-through'
     el.nextElementSibling.style.color = 'green'
   }
