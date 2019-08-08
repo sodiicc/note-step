@@ -1,5 +1,4 @@
 let checkbox = document.querySelectorAll('.checkbox')
-console.log('checked', checkbox)
 checkbox.forEach((el)=>{
   if(el.checked){
     el.nextElementSibling.style.textDecoration = 'line-through'
@@ -23,12 +22,9 @@ checkbox.forEach((el)=>{
 
 async function edList(id) {
   let text =[]
-  console.log('id', +id)
   let noteText = document.querySelectorAll('.list-item')
-  console.log('noteText', noteText)
   
   noteText.forEach((el)=>{
-    console.log('el', el)
     text.push([el.innerText, el.previousElementSibling.checked])
   })
 
@@ -36,7 +32,6 @@ async function edList(id) {
       id: id,
       text: text
     }
-  console.log('data', data)
   let req = await fetch(`http://127.0.0.1:3000/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
@@ -45,5 +40,4 @@ async function edList(id) {
     body: JSON.stringify(data)
   }
   )
-  console.log('data-sr', data)
 }

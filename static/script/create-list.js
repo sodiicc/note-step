@@ -53,8 +53,7 @@ createBtn.addEventListener('click', async ()=>{
         "Content-type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-    console.log('req',req)  
+    }) 
     let ans = await req.json()
     window.location.href = `/`
 })

@@ -20,15 +20,13 @@ async function createNote() {
       title: noteTitle.value,
       text: noteText.value
     }
-    console.log('data', data)
     let req = await fetch('http://127.0.0.1:3000/api/notes', {
       method: 'POST',
       headers: {
         "Content-type": "application/json"
       },
       body: JSON.stringify(data)
-    })
-    console.log('req',req)  
+    })  
     let ans = await req.json()
     window.location.href = `/`
   }

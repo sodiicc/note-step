@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
+// Добавка бази даних
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = 'mongodb+srv://sodiicc:trader32@cluster0-rsnt4.mongodb.net/test?retryWrites=true&w=majority'
@@ -52,7 +53,6 @@ app.get('/lists', async (req,res)=>{
 app.get('/id/:id', async (req, res)=>{
   let note = []
   let id = +req.params.id
-  console.log('id-wtf', id)
   await app.db.find({id: id}).forEach((el)=>{
       note.push(el)
   })
@@ -62,7 +62,6 @@ app.get('/id/:id', async (req, res)=>{
 // Роут POST /api/notes для создания заметки.
 
 app.post('/api/notes', async (req, res)=>{
-  console.log(req.body)
   try{
    await app.db.insertOne({
       ...req.body
@@ -74,8 +73,9 @@ app.post('/api/notes', async (req, res)=>{
   res.json({created: "true"})
 })
 
+// Роут POST /api/notes для создания List.
+
 app.post('/api/lists', async (req, res)=>{
-  console.log(req.body)
   try{
    await app.db.insertOne({
       ...req.body
@@ -96,13 +96,11 @@ app.get('/api/notes/:id', async (req, res)=>{
   await app.db.find({id: id}).forEach((el)=>{
     card =el
   })
-  console.log('card', card)
 
   res.render("update-card", {card})
 })
 
 app.put('/api/notes/:id', async (req, res)=>{
-  console.log('req.body.id', req.body.id)
   try{
    await app.db.updateOne({
     id: +req.body.id
@@ -120,19 +118,20 @@ app.put('/api/notes/:id', async (req, res)=>{
   res.json({edited: true})
 
 })
+
+// Роут PUT /api/lists/${id} для редактирования List.
+
 app.get('/api/lists/:id', async (req, res)=>{
   let id = +req.params.id
   let list
   await app.db.find({id: id}).forEach((el)=>{
     list =el
   })
-  console.log('list', list)
 
   res.render("update-list", {list})
 })
 
 app.put('/api/lists/:id', async (req, res)=>{
-  console.log('req.body.id', req.body.id)
   try{
    await app.db.updateOne({
     id: +req.body.id
@@ -151,8 +150,6 @@ app.put('/api/lists/:id', async (req, res)=>{
 
 })
 app.put('/api/lists/checked/:id', async (req, res)=>{
-  console.log('req.body.id', req.body.id)
-  console.log('req.body.text', req.body.text)
   try{
    await app.db.updateOne({
     id: +req.body.id
@@ -172,15 +169,12 @@ app.put('/api/lists/checked/:id', async (req, res)=>{
 // Роут DELETE /api/notes/${id} для удаления заметки.
 
 app.delete('/api/notes/:id', async (req, res)=>{
-  console.log(+req.body.id)
-  try{
-    
+  try{    
    await app.db.deleteOne({
       id: +req.body.id
     })
 
-  }catch(err){
-    
+  }catch(err){    
     console.log(err)
   }
   res.json({deleted: true})

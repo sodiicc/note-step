@@ -15,20 +15,17 @@ newTaskDiv.innerHTML = newTask
 
 saveBtn.addEventListener('click', () => {
   let id = saveBtn.getAttribute('data-id')
-  console.log('id', id)
   edList(id)
 })
 
 list.addEventListener('click', (e)=>{
   if(e.target.classList.contains('close-btn')){
     e.target.parentNode.remove()
-    console.log('e.target.parentNode', e.target.parentNode)
 
   }
 })
 
 async function edList(id) {
-  console.log('id', +id)
   let noteTitle = document.getElementById('note-title')
   let noteText = document.querySelectorAll('.note-text')
   let text =[]
@@ -38,14 +35,11 @@ async function edList(id) {
 
     }
   })
-  
-  console.log('text', text)
     let data = {
       id: id,
       title: noteTitle.value,
       text: text
     }
-  console.log('data', data)
   let req = await fetch(`http://127.0.0.1:3000/api/lists/${id}`, {
     method: 'PUT',
     headers: {
@@ -54,6 +48,5 @@ async function edList(id) {
     body: JSON.stringify(data)
   }
   )
-  console.log('data-sr', data)
   window.location.href = `/`
 }
