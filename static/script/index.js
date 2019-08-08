@@ -72,16 +72,9 @@ function getTextVal(id) {
 }
 function getCol(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode
-}
 function getCardBody(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`)
 }
-
-let checkbox = document.querySelectorAll('.checkbox')
-console.log('checked', checkbox)
-checkbox.forEach((el)=>{
-  if(el.checked){
-    el.parentElement.parentElement.appendChild(el.parentElement)
     el.nextElementSibling.style.textDecoration = 'line-through'
     el.nextElementSibling.style.color = 'green'
   }
@@ -99,7 +92,6 @@ checkbox.forEach((el)=>{
       
     }
   })
-})
 
 async function edList(id) {
   let text =[]
