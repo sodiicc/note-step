@@ -33,7 +33,10 @@ async function edList(id) {
   let noteText = document.querySelectorAll('.note-text')
   let text =[]
   noteText.forEach((el)=>{
-    text.push([el.value, el.previousElementSibling.checked])
+    if(el.value){
+      text.push([el.value, el.previousElementSibling.checked])
+
+    }
   })
   
   console.log('text', text)
