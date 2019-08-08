@@ -150,6 +150,25 @@ app.put('/api/lists/:id', async (req, res)=>{
   res.json({edited: true})
 
 })
+app.put('/api/lists/checked/:id', async (req, res)=>{
+  console.log('req.body.id', req.body.id)
+  console.log('req.body.text', req.body.text)
+  try{
+   await app.db.updateOne({
+    id: +req.body.id
+    },
+    {
+      $set: {
+        text: req.body.text
+      }
+    })
+
+  }catch(err){    
+    console.log(err)
+  }
+  res.json({edited: true})
+
+})
 // Роут DELETE /api/notes/${id} для удаления заметки.
 
 app.delete('/api/notes/:id', async (req, res)=>{
