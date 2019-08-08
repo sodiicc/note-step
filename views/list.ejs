@@ -17,12 +17,13 @@
         <h3 class="card-title alert-link"><%= el.title%></h3>
         <h5 id="list-task" class="card-text">
           <% el.text.forEach((e) => { %>
-          <li class="list-item" data-id="<%= el.id %>"><%= e %></li>
+          <li class="list-item" data-id="<%= el.id %>"><%= e[0] %></li>
          <% }) %>
         </h5>
         <button class="btn btn-primary badge-pill edit-list-btn" data-id="<%= el.id %>">Edit</button>
       </div>
     </div>
   </div>
+  <script src="../script/list.js"></script>
 </body>
 </html>

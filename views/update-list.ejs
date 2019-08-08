@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="col-lg-4">
+        <div class="col-lg-6">
           <div class="card bg-warning m-3 list" data-idc="${id}">
             <div class="list-body m-3" style="cursor: pointer" data-id="${id}">
               <div class="text-right">
@@ -24,7 +24,8 @@
                 <div class="form-groups">
                 <% list.text.forEach((e) => { %>
                   <div class="p-2">
-                  <textarea class=" note-text col-10 m-0" rows="2" data-id="<%= list.id %>"><%= e %></textarea><button class="bg-danger ml-1 close-btn">X</button>
+                      <input type="checkbox" class="checkbox" <% if(e[1]){ %> checked <% } %> >
+                  <textarea class=" note-text col-10 m-0" rows="2" data-id="<%= list.id %>"><%= e[0] %></textarea><button class="bg-danger ml-1 close-btn">X</button>
                 </div>
                  <% }) %>
                 </div>

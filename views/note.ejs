@@ -26,16 +26,20 @@
           <div class="card bg-info m-3">
             <div class="card-body list-card" style="cursor: pointer" data-id="<%= note[0].id %>">
               <h3 class="card-title alert-link"><%= note[0].title%></h3>
-              <h5 id="list-task" class="card-text">
+              <div id="list-task" class="card-text">
                 <% note[0].text.forEach((e) => { %>
-                <li class="list-item" data-id="<%= note[0].id %>"><%= e %></li>
-               <% }) %>
+                  <h5>
+                  <input type="checkbox" class="checkbox" <% if(e[1]){ %> checked <% } %> >
+                <span class="list-item" data-id="<%= note[0].id %>"><%= e[0] %></span>
               </h5>
+               <% }) %>
+              </div>
               <a href="/"><button class="btn btn-success badge-pill edit-list-btn" data-id="<%= note.id %>">Go back</button></a>
             </div>
           </div>
         </div>
         <% }%>
   </div>
+  <script src="../script/list.js"></script>
 </body>
 </html>

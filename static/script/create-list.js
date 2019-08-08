@@ -37,7 +37,8 @@ createBtn.addEventListener('click', async ()=>{
     let idDate = Date.now()
     const listInputs = Array.from(addList.children)
         listInputs.forEach((e)=>{
-        dataList.push(e.firstChild.data)
+            dataCheckbox = [e.firstChild.data, true] 
+        dataList.push(dataCheckbox) 
     })
     let data = {
         id: idDate,

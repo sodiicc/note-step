@@ -4,6 +4,7 @@ let list = document.querySelector('.list')
 
 addBtn.addEventListener('click', ()=>{
   let newTask = `
+  <input type="checkbox" class="checkbox">
       <textarea class=" note-text col-10 m-0" rows="2" data-id="<%= list.id %>">${document.getElementById('input-form').value}</textarea><button class="bg-danger ml-1 close-btn">X</button>`
 let newTaskDiv = document.createElement('div')
 newTaskDiv.classList.add('p-2')
@@ -32,9 +33,13 @@ async function edList(id) {
   let noteText = document.querySelectorAll('.note-text')
   let text =[]
   noteText.forEach((el)=>{
-    text.push(el.value)
-  })
+    if(el.value){
+      text.push([el.value, el.previousElementSibling.checked])
 
+    }
+  })
+  
+  console.log('text', text)
     let data = {
       id: id,
       title: noteTitle.value,
