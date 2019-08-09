@@ -1,5 +1,4 @@
 let checkbox = document.querySelectorAll('.checkbox')
-
 checkbox.forEach((el)=>{
   if(el.checked){
     el.nextElementSibling.style.textDecoration = 'line-through'

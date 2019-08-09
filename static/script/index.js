@@ -24,6 +24,22 @@ function editList(id) {
   window.location.href = `/api/lists/${id}`
 }
 
+async function editList(id) {
+  let text =[]
+  document.querySelectorAll('.list-item').forEach((el)=>{if(el.getAttribute('data-id') == id){
+    text.push(el.innerText)
+  }
+  })
+  console.log('text', text)
+  let data = {
+    id: id,
+    title: getTitleVal(id),
+    text: text
+  }
+  console.log('data', data)
+  window.location.href = `/api/lists/${id}`
+}
+
 async function deleteNote(id) {
   let data = {
     id: id
