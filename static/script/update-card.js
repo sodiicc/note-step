@@ -13,7 +13,7 @@ async function edNote(id) {
       title: noteTitle.value,
       text: noteText.value
     }
-  let req = await fetch(`http://127.0.0.1:3000/api/notes/${id}`, {
+  let req = await fetch(`/api/notes/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"

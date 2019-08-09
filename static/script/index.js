@@ -28,7 +28,7 @@ async function deleteNote(id) {
   let data = {
     id: id
   }
-  let req = await fetch(`http://127.0.0.1:3000/api/notes/${id}`, {
+  let req = await fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       "Content-type": "application/json"
@@ -98,7 +98,7 @@ async function edList(id) {
       id: id,
       text: text
     }
-  let req = await fetch(`http://127.0.0.1:3000/api/lists/checked/${id}`, {
+  let req = await fetch(`/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"

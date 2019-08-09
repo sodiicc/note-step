@@ -47,7 +47,7 @@ createBtn.addEventListener('click', async ()=>{
         list: true
     }
 
-    let req = await fetch('http://127.0.0.1:3000/api/lists', {
+    let req = await fetch(`/api/lists`, {
       method: 'POST',
       headers: {
         "Content-type": "application/json"

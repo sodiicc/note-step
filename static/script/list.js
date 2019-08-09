@@ -1,4 +1,5 @@
 let checkbox = document.querySelectorAll('.checkbox')
+
 checkbox.forEach((el)=>{
   if(el.checked){
     el.nextElementSibling.style.textDecoration = 'line-through'
@@ -32,7 +33,7 @@ async function edList(id) {
       id: id,
       text: text
     }
-  let req = await fetch(`http://127.0.0.1:3000/api/lists/checked/${id}`, {
+  let req = await fetch(`/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"
