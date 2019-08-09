@@ -40,7 +40,7 @@ async function edList(id) {
       title: noteTitle.value,
       text: text
     }
-  let req = await fetch(`${port}/api/lists/${id}`, {
+  let req = await fetch(`/api/lists/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"
