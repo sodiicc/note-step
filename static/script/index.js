@@ -6,10 +6,8 @@ let currentId
 noteList.addEventListener('click', (e) => {
   let id = e.target.dataset.id
   if (e.target.classList.contains('btn-danger')) {
-    console.log('delete')
     deleteNote(id)
   } else if (e.target.classList.contains('edit-btn')) {
-    console.log('Edit')
     editNote(id)
   } else if (e.target.classList.contains('card-body')) {
     window.location.href = `/id/${id}`
@@ -18,14 +16,12 @@ noteList.addEventListener('click', (e) => {
   }
 })
 
-async function editNote(id) {
-  let data = {
-    id: id,
-    title: getTitleVal(id),
-    text: getTextVal(id)
-  }
-  console.log('data', data)
+function editNote(id) {
   window.location.href = `/api/notes/${id}`
+}
+
+function editList(id) {
+  window.location.href = `/api/lists/${id}`
 }
 
 async function editList(id) {
@@ -48,14 +44,13 @@ async function deleteNote(id) {
   let data = {
     id: id
   }
-  let req = await fetch(`http://127.0.0.1:3000/api/notes/${id}`, {
+  let req = await fetch(`/api/notes/${id}`, {
     method: 'DELETE',
     headers: {
       "Content-type": "application/json"
     },
     body: JSON.stringify(data)
   })
-  console.log('JSON.stringify(data)', JSON.stringify(data))
 
   let answer = await req.json()
   if (answer.deleted) {
@@ -82,7 +77,6 @@ function getCardBody(id) {
 let checkbox = document.querySelectorAll('.checkbox')
 checkbox.forEach((el)=>{
   let id = el.nextElementSibling.getAttribute('data-id')
-  console.log('idElem', id)
   if(el.checked){
     el.parentElement.parentElement.appendChild(el.parentElement)
     el.nextElementSibling.style.textDecoration = 'line-through'
@@ -120,8 +114,7 @@ async function edList(id) {
       id: id,
       text: text
     }
-  console.log('data', data)
-  let req = await fetch(`http://127.0.0.1:3000/api/lists/checked/${id}`, {
+  let req = await fetch(`/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"
