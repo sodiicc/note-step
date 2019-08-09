@@ -24,22 +24,6 @@ function editList(id) {
   window.location.href = `/api/lists/${id}`
 }
 
-async function editList(id) {
-  let text =[]
-  document.querySelectorAll('.list-item').forEach((el)=>{if(el.getAttribute('data-id') == id){
-    text.push(el.innerText)
-  }
-  })
-  console.log('text', text)
-  let data = {
-    id: id,
-    title: getTitleVal(id),
-    text: text
-  }
-  console.log('data', data)
-  window.location.href = `/api/lists/${id}`
-}
-
 async function deleteNote(id) {
   let data = {
     id: id
@@ -59,20 +43,8 @@ async function deleteNote(id) {
   }
 }
 
-function getTitleVal(id) {
-  return document.querySelector(`.card-body[data-id="${id}"] h3`).innerText
-}
-function getTextVal(id) {
-  return document.querySelector(`.card-body[data-id="${id}"] h4`).innerText
-}
-
 function getCol(id) {
   return document.querySelector(`.card-body[data-id="${id}"]`).parentNode.parentNode}
-
-function getCardBody(id) {
-  return document.querySelector(`.card-body[data-id="${id}"]`)
-}
-   
 
 let checkbox = document.querySelectorAll('.checkbox')
 checkbox.forEach((el)=>{
@@ -114,7 +86,7 @@ async function edList(id) {
       id: id,
       text: text
     }
-  let req = await fetch(`/api/lists/checked/${id}`, {
+  await fetch(`/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"

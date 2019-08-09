@@ -32,7 +32,7 @@ async function edList(id) {
       id: id,
       text: text
     }
-  let req = await fetch(`/api/lists/checked/${id}`, {
+  await fetch(`/api/lists/checked/${id}`, {
     method: 'PUT',
     headers: {
       "Content-type": "application/json"
